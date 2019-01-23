@@ -113,6 +113,18 @@ namespace Microsoft.VisualStudio.TestPlatform.Common.DataCollector
             this.SendTextMessage(context, text, TestMessageLevel.Warning);
         }
 
+        /// <inheritdoc/>
+        public override void LogInfo(string text)
+        {
+            if (EqtTrace.IsVerboseEnabled)
+            {
+                ValidateArg.NotNull(text, "text");
+
+                EqtTrace.Verbose("Data collector '{0}' logged the following warning: {1}",
+                        this.dataCollectorConfig.TypeUri, text);
+            }
+        }
+
         /// <summary>
         /// Sends text to message sink.
         /// </summary>

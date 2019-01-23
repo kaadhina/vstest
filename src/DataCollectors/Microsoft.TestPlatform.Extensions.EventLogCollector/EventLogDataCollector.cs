@@ -564,18 +564,12 @@ namespace Microsoft.TestPlatform.Extensions.EventLogCollector
                         this.eventLogContainerMap.Add(eventLogName, eventLogContainer);
                     }
 
-                    if (EqtTrace.IsVerboseEnabled)
-                    {
-                        EqtTrace.Verbose(string.Format(
-                            CultureInfo.InvariantCulture,
-                            "EventLogDataCollector: Created EventSource '{0}'",
-                            eventLogName));
-                    }
+                    this.logger.LogInfo($"Created EventSource {eventLogName}");
                 }
                 catch (Exception ex)
                 {
                     this.logger.LogError(
-                        null,
+                        this.dataCollectorContext,
                         new EventLogCollectorException(string.Format(CultureInfo.InvariantCulture, Resource.ReadError, eventLogName, Environment.MachineName), ex));
                 }
             }

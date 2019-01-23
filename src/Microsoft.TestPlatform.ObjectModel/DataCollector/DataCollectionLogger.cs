@@ -43,6 +43,12 @@ namespace Microsoft.VisualStudio.TestPlatform.ObjectModel.DataCollection
         }
 
         /// <summary>
+        /// Logs an info message.
+        /// </summary>
+        /// <param name="text">The error text.  Cannot be null.</param>
+        public abstract void LogInfo(string text);
+
+        /// <summary>
         /// Logs an error message for an exception.
         /// </summary>
         /// <param name="context">The context in which the message is being sent.</param>
